@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>Get all blogs</h2>
-        <p><button v-on:click="logout">Logout</button></p>
+        
         <h4>จํานวน blog {{ blogs.length }}</h4>
         <p><button v-on:click="navigateTo('/blog/create')">สร้าง
                 blog</button></p>
@@ -33,13 +33,7 @@ export default {
     async created() {
         this.blogs = (await BlogsService.index()).data
     }, methods: {
-        logout() {
-            this.$store.dispatch('setToken', null)
-            this.$store.dispatch('setBlog', null)
-            this.$router.push({
-                name: 'login'
-            })
-        },
+        
         navigateTo(route) {
             this.$router.push(route)
         },
